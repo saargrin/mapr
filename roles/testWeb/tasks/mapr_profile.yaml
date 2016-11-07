@@ -1,0 +1,7 @@
+    - name: add test group
+      group: name=test state=present gid=1500
+    - name: add test user
+      user: name=test password={{password}} uid="1500" shell=/bin/bash home=/home/test groups=test generate_ssh_key=yes ssh_key_bits=2048 state=present createhome=yes
+    - name: mapr profile
+      copy: src=files/mapr.sh dest=/etc/profile.d/ mode=777 backup=yes owner=mapr group=mapr
+
